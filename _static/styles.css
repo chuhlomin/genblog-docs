@@ -1,0 +1,203 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url(./JetBrainsMono-Regular.woff2) format('woff2');
+}
+
+:root {
+  --font-default: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-monospace: JetBrains Mono, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+
+  --underline-opacity: 0.25;
+
+  --color-text: #222222;
+  --color-header: #000000;
+  --color-background: #ffffff;
+  --color-link: #0360c0;
+  --color-link-underscore: rgba(9, 105, 218, var(--underline-opacity));
+  --color-link-visited: #551A8B;
+  --color-link-visited-underscore: rgba(85, 26, 139, var(--underline-opacity));
+  --color-link-hover: #0969da;
+  --color-link-hover-underscore: rgba(9, 105, 218, var(--underline-opacity));
+
+  --color-panel-text: #222222;
+  --color-panel-background: #ffffff;
+  --color-panel-border: #b7b7b7;
+  --color-panel-current: #f0f0f0;
+
+  --color-logo-backgorund: #393d4c;
+}
+
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-default);
+  font-size: 18px;
+  line-height: 26px;
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+html, body, .wrapper {
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 40px;
+  margin: 0;
+  color: var(--color-header);
+}
+
+h2 {
+  margin-top: 20px;
+}
+
+p {
+  margin: 10px 0 0 0;
+}
+
+a {
+  transition-property: color, border;
+  transition-duration: 0.33s;
+  transition-timing-function: ease-out;
+  text-decoration: none;
+  color: var(--color-link);
+  border-bottom: 1px solid var(--color-link-underscore);
+}
+a:visited {
+  color: var(--color-link-visited);
+  border-bottom: 1px solid var(--color-link-visited-underscore);
+}
+a:hover {
+  color: var(--color-link-hover);
+  border-color: var(--color-link-hover-underscore);
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 25ch min(60ch, calc(100% - 40px)) 1fr;
+}
+
+.panel {
+  grid-column: 1;
+  padding: 0;
+  background: var(--color-panel-background);
+  border-right: 1px solid var(--color-panel-border);
+}
+
+.logo {
+  padding: 10px 20px;
+  font-weight: bold;
+  background: var(--color-logo-backgorund);
+  text-transform: uppercase;
+  font-family: var(--font-monospace);
+  cursor: default;
+}
+
+.content {
+  grid-column: 2;
+  padding: 20px;
+}
+
+.content img {
+  object-fit: contain;
+}
+
+ul {
+  margin: 10px 0 0 0;
+  padding: 0 0 0 30px;
+}
+ul li + li {
+  margin-top: 10px;
+}
+
+.panel ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.panel a, .panel .current {
+  display: block;
+  padding: 10px 20px;
+  border: none;
+  color: var(--color-panel-text);
+}
+
+.panel ul li + li {
+  margin: 0;
+}
+
+.panel .current {
+  cursor: default;
+}
+
+.panel .current, .panel a:hover {
+  background: var(--color-panel-current);
+}
+
+.panel hr {
+  border: none;
+  border-top: 1px solid var(--color-panel-border);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: #eaf3f2;
+    --color-background: #282a3a;
+    --color-header: #ffe170;
+    --color-link: #bbd760;
+    --color-link-underscore: rgba(102, 187, 255, var(--underline-opacity));
+    --color-link-visited: #E0B0FF;
+    --color-link-visited-underscore: rgba(224, 176, 255, var(--underline-opacity));
+    --color-link-hover: #f8ff83;
+    --color-link-hover-underscore: rgba(248, 255, 131, var(--underline-opacity));
+
+    --color-panel-text: #888d94;
+    --color-panel-background: #1e1f2b;
+    --color-panel-border: #161821;
+    --color-panel-current: #252633;
+
+    --color-logo-backgorund: #393d4c;
+
+    /* #ff677d red, #34d1ff blue, #8c9198 gray, #575b67 light gray */
+  }
+}
+
+@media screen and (max-width: 815px) { /* tablet */
+  
+}
+
+@media screen and (max-width: 450px) { /* mobile */
+  .content {
+    margin-bottom: 10px;
+  }
+
+  .header-content,
+  .wrapper {
+    grid-template-columns: 1fr min(60ch, calc(100% - 20px)) 1fr;
+    grid-column-gap: 10px;
+  }
+
+  .content video,
+  .content img {
+    margin-left: -10px;
+    margin-right: -10px;
+    max-width: calc(100% + 20px);
+  }
+}
