@@ -12,7 +12,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: true
 
 jobs:
@@ -26,10 +26,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: GenBlog
-        uses: chuhlomin/genblog@v1.0-rc3
+        uses: chuhlomin/genblog@v1.0-rc4
         with:
-          base_path: "https://genblog.io/"
-          static_directory: "_static"
+          base_path: https://genblog.io/
+          static_directory: _static
 
       - name: Setup Pages
         uses: actions/configure-pages@v1
