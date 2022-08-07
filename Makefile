@@ -14,3 +14,9 @@ clean:
 ## build: run genblog, copy static files
 build:
 	@genblog; cp -R _static/ output/
+
+.PHONY: watch
+## watch: run genblog, watch for changes
+watch:
+	@echo "Watching for file changes..."
+	@fswatch -or -e "output" -e ".git" . | xargs -n1 sh -c genblog
