@@ -1,4 +1,5 @@
 {{ define "_panel" }}
+<div class="menu">
 {{ if eq .Current.Type "index" }}
 <div class="logo current">GenBlog</div>
 {{ else }}
@@ -17,4 +18,6 @@
 <li><a href="{{ config "BasePath" }}releases.html">Releases</a></li>
 <li><a href="https://github.com/chuhlomin/genblog">GitHub</a></li>
 </ul>
+</div>
+<div class="toggle">≡</div>
 {{ end }}

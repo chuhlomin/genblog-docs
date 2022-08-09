@@ -1,0 +1,11 @@
+{{ define "_scripts" }}
+<script>
+document.querySelectorAll(".toggle").forEach(function(el) {
+  el.addEventListener("click", function() {
+    document.querySelectorAll(".panel").forEach(function(el) {
+      el.classList.toggle("open");
+    });
+  });
+});
+</script>
+{{ end }}
