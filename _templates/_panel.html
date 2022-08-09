@@ -1,23 +1,24 @@
 {{ define "_panel" }}
-<div class="menu">
-{{ if eq .Current.Type "index" }}
-<div class="logo current">GenBlog</div>
-{{ else }}
-<a class="logo" href="{{ config "BasePath" }}index.html">GenBlog</a>
-{{ end }}
-<ul>
-{{ range sort .All "order" }}
-{{ if eq .Type "page" }}
-{{ if eq $.Current.Path .Path }}
-<li class="page"><span class="current">{{ .Title }}</span></li>
-{{ else }}
-<li class="page"><a href="{{ config "BasePath" }}{{ .Path }}">{{ .Title }}</a></li>
-{{ end }}
-{{ end }}
-{{ end }}
-<li><a href="{{ config "BasePath" }}releases.html">Releases</a></li>
-<li><a href="https://github.com/chuhlomin/genblog">GitHub</a></li>
-</ul>
+<div class="panel">
+    {{ if eq .Current.Type "index" }}
+    <div class="logo current">GenBlog</div>
+    {{ else }}
+    <a class="logo" href="{{ config "BasePath" }}index.html">GenBlog</a>
+    {{ end }}
+
+    <ul>
+    {{ range sort .All "order" }}
+    {{ if eq .Type "page" }}
+    {{ if eq $.Current.Path .Path }}
+    <li class="page"><span class="current">{{ .Title }}</span></li>
+    {{ else }}
+    <li class="page"><a href="{{ config "BasePath" }}{{ .Path }}">{{ .Title }}</a></li>
+    {{ end }}
+    {{ end }}
+    {{ end }}
+    <li><a href="{{ config "BasePath" }}releases.html">Releases</a></li>
+    <li><a href="https://github.com/chuhlomin/genblog">GitHub</a></li>
+    </ul>
 </div>
 <div class="toggle">≡</div>
 {{ end }}

@@ -53,6 +53,8 @@
 
   --color-border-default: #d0d7de;
   --color-border-muted: hsla(210,18%,87%,1);
+
+  --transition: .4s ease-in-out;
 }
 
 /*
@@ -188,6 +190,10 @@ p + table {
   border-right: 1px solid var(--color-panel-border);
 }
 
+.toggle {
+  display: none;
+}
+
 .logo {
   display: block;
   padding: 10px 20px;
@@ -288,15 +294,21 @@ ul li + li {
 
   .panel {
     position: fixed;
-    bottom: -500px;
+    bottom: 0;
     left: 15px;
     right: 15px;
     border: 1px solid transparent;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
-    transition: bottom 0.2s ease-in-out;
     user-select: none;
     z-index: 100;
+    transform: scale(0.6) translateX(23%) translateY(200%);
+    transition: var(--transition);
+  }
+
+  .show-panel .panel {
+    border-color: var(--color-panel-border);
+    transform: none;
   }
 
   .panel .logo.current {
@@ -304,7 +316,7 @@ ul li + li {
     border-top-right-radius: 6px;
   }
 
-  .panel .toggle {
+  .toggle {
     display: block;
     position: fixed;
     bottom: 0;
@@ -314,23 +326,17 @@ ul li + li {
     text-align: center;
     background: var(--color-panel-background);
     border-radius: 100px;
-    transition: opacity 0.2s ease-in-out;
+    transition: opacity var(--transition);
     z-index: 200;
   }
 
-  .show-panel .panel {
-    width: calc(100% - 30px);
-    border: 1px solid var(--color-panel-border);
-    bottom: 0;
-  }
-
-  .show-panel .panel .toggle {
+  .show-panel .toggle {
     opacity: 1;
   }
 
   .content {
     padding: 15px 15px 40px;
-    transition: filter 0.2s ease-in-out;
+    transition: filter var(--transition);
   }
 
   .show-panel .content {
@@ -340,7 +346,7 @@ ul li + li {
 
 @supports(padding: max(0px)) {
   @media screen and (max-width: 815px) { /* tablet */
-    .panel .toggle {
+    .toggle {
         bottom: max(12px, env(safe-area-inset-left));
         bottom: max(12px, env(safe-area-inset-right));
     }
