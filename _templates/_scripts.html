@@ -2,8 +2,8 @@
 <script>
 document.querySelectorAll(".toggle").forEach(function(el) {
   el.addEventListener("click", function() {
-    document.querySelectorAll(".panel").forEach(function(el) {
-      el.classList.toggle("open");
+    document.querySelectorAll(".wrapper").forEach(function(el) {
+      el.classList.toggle("show-panel");
     });
   });
 });
