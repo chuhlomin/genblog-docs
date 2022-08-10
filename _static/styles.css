@@ -34,21 +34,21 @@
   --color-background: #ffffff;
   --color-neutral-muted: rgba(175,184,193,0.2);
   --color-canvas-subtle: #f6f8fa;
-  --color-link: #0360c0;
+  --color-link: #4d8fc7;
   --color-link-underscore: rgba(9, 105, 218, var(--underline-opacity));
-  --color-link-visited: #551A8B;
+  --color-link-visited: #7653c1;
   --color-link-visited-underscore: rgba(85, 26, 139, var(--underline-opacity));
   --color-link-hover: #0969da;
   --color-link-hover-underscore: rgba(9, 105, 218, var(--underline-opacity));
 
   --color-panel-text: #222222;
-  --color-panel-background: #ffffff;
-  --color-panel-border: #b7b7b7;
-  --color-panel-current: #f0f0f0;
+  --color-panel-background: #ecedf3;
+  --color-panel-border: #d3d3d3;
+  --color-panel-current: #d9d9e3;
 
   --color-logo-backgorund: #d4d4d4;
 
-  --color-code-text: #aa3731;
+  --color-code-text: #d4430e;
   --color-code-background: var(--color-neutral-muted);
 
   --color-border-default: #d0d7de;
@@ -297,13 +297,17 @@ ul li + li {
     bottom: 0;
     left: 15px;
     right: 15px;
+    max-height: 100vh;
+    overflow: auto;
     border: 1px solid transparent;
+    border-bottom: 0;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
     user-select: none;
     z-index: 100;
-    transform: scale(0.6) translateX(23%) translateY(200%);
+    transform: scale(0.8) translateY(200%);
     transition: var(--transition);
+    overscroll-behavior: contain;
   }
 
   .show-panel .panel {
@@ -325,6 +329,8 @@ ul li + li {
     padding: 10px 20px;
     text-align: center;
     background: var(--color-panel-background);
+    box-shadow: 0 -4px 10px inset rgba(0,0,0,0.3);
+    border: 1px solid rgba(0,0,0,0.3);
     border-radius: 100px;
     transition: opacity var(--transition);
     z-index: 200;
@@ -332,28 +338,34 @@ ul li + li {
 
   .show-panel .toggle {
     opacity: 1;
+    box-shadow: 0 4px 15px inset rgba(0,0,0,0.3);
   }
 
   .content {
-    padding: 15px 15px 40px;
+    padding: 20px 15px 40px;
     transition: filter var(--transition);
   }
 
   .show-panel .content {
-    filter: brightness(0.5) blur(2px);
+    filter: blur(2px) opacity(0.8);
   }
 }
 
 @supports(padding: max(0px)) {
   @media screen and (max-width: 815px) { /* tablet */
+    .content {
+      padding-left: max(25px, env(safe-area-inset-left));
+      padding-right: max(25px, env(safe-area-inset-right));
+    }
+
     .toggle {
-        bottom: max(12px, env(safe-area-inset-left));
-        bottom: max(12px, env(safe-area-inset-right));
+        bottom: max(12px, env(safe-area-inset-bottom));
+        bottom: max(12px, env(safe-area-inset-bottom));
     }
 
     .show-panel .panel {
       bottom: 0;
-      padding-bottom: max(12px, env(safe-area-inset-right));
+      padding-bottom: max(12px, env(safe-area-inset-bottom));
     }
   }
 }

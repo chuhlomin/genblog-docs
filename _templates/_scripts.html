@@ -2,7 +2,23 @@
 <script>
 document.querySelectorAll(".toggle").forEach(function(el) {
   el.addEventListener("click", function() {
-    document.querySelectorAll(".wrapper").forEach(function(el) {
+    document.querySelectorAll("body").forEach(function(el) {
+      if (el.classList.contains("show-panel")) {
+        const scrollY = document.body.style.top;
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.right = '';
+        document.body.style.bottom = '';
+        document.body.style.left = '';
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      } else {
+        const scrollY = window.scrollY;
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.right = '0';
+        document.body.style.bottom = '0';
+        document.body.style.left = '0';
+      }
       el.classList.toggle("show-panel");
     });
   });
